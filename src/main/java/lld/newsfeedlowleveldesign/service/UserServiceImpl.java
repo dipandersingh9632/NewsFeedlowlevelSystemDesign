@@ -1,0 +1,30 @@
+package main.java.lld.newsfeedlowleveldesign.service;
+
+import main.java.lld.newsfeedlowleveldesign.models.User;
+import main.java.lld.newsfeedlowleveldesign.session.SessionManager;
+
+import java.util.Map;
+
+public class UserServiceImpl implements UserService{
+
+    @Override
+    public String createUser(User user, Map<String, User> userMap) {
+        if(userMap.containsKey(user.getEmail())){
+            return "USER ALREADY EXISTS WITH THIS EMAIL";
+        }
+        // save the USER
+        userMap.put(user.getEmail(), user);
+        return "USER SUCCESSFULLY SIGNED UP";
+    }
+
+    @Override
+    public String loginUser(String email, String password, Map<String,User> userMap){
+        if(!userMap.containsKey(email)) return "USER DOES NOT EXIST WITH THIS EMAIL " + email;
+        User loggedInUser = userMap.get(email);
+        if(loggedInUser.getPassword().compareTo(password) == 0){
+            SessionManager.setLoggedInUser(loggedInUser);
+            return "USER LOGGED IN";
+        }
+        else return "PASSWORD IS NOT CORRECT";
+    }
+}
