@@ -1,6 +1,6 @@
 package main.java.lld.newsfeedlowleveldesign.dto;
 
-import main.java.lld.newsfeedlowleveldesign.models.NewsFeed;
+import main.java.lld.newsfeedlowleveldesign.models.Post;
 import main.java.lld.newsfeedlowleveldesign.models.User;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public class RequestUserDto {
     private String password;
     private List<User> followers;
     private List<User> following;
-    private List<NewsFeed> newsFeedList;
+    private List<Post> postList;
 
     public String getName() {
         return name;
@@ -53,11 +53,11 @@ public class RequestUserDto {
         this.following = following;
     }
 
-    public List<NewsFeed> getNewsFeedList() {
-        return newsFeedList;
+    public List<Post> getNewsFeedList() {
+        return postList;
     }
 
-    public void setNewsFeedList(List<NewsFeed> newsFeedList) {
-        this.newsFeedList = newsFeedList;
+    public void setNewsFeedList(List<Post> postList) {
+        this.postList = postList;
     }
 }

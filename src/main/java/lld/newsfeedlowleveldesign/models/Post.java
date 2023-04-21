@@ -1,44 +1,64 @@
 package main.java.lld.newsfeedlowleveldesign.models;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
-public class NewsFeed {
-    private String newsArticle;
+public class Post {
+    private String text;
     private User user;
     private int upVotes;
     private int downVotes;
+    private Set<User> upVoteSet;
+    private Set<User> downVoteSet;
     private List<Comment> commentList;
     private Date timestamp;
 
-    public NewsFeed(String newsArticle, User user){
-        this.newsArticle = newsArticle;
+    public Post(String newsArticle, User user){
+        this.text = newsArticle;
         this.user = user;
         this.upVotes = 0;
         this.downVotes = 0;
         this.commentList = new ArrayList<>();
         this.timestamp = new Date();
+        upVoteSet = new HashSet<>();
+        downVoteSet = new HashSet<>();
     }
 
     @Override
     public String toString() {
-        return "NewsFeed{" +
-                "newsArticle='" + newsArticle + '\'' +
+        return "Post{" +
+                "text='" + text + '\'' +
                 ", user=" + user +
                 ", upVotes=" + upVotes +
                 ", downVotes=" + downVotes +
+                ", upVoteSet=" + upVoteSet +
+                ", downVoteSet=" + downVoteSet +
                 ", commentList=" + commentList +
                 ", timestamp=" + timestamp +
                 '}';
     }
 
-    public String getNewsArticle() {
-        return newsArticle;
+    public Set<User> getUpVoteSet() {
+        return upVoteSet;
     }
 
-    public void setNewsArticle(String newsArticle) {
-        this.newsArticle = newsArticle;
+    public void setUpVoteSet(Set<User> upVoteSet) {
+        this.upVoteSet = upVoteSet;
+    }
+
+    public Set<User> getDownVoteSet() {
+        return downVoteSet;
+    }
+
+    public void setDownVoteSet(Set<User> downVoteSet) {
+        this.downVoteSet = downVoteSet;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public User getUser() {

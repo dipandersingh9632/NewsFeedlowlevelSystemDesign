@@ -2,21 +2,13 @@ package main.java.lld.newsfeedlowleveldesign.models;
 
 import java.util.Date;
 
-public class Comment {
+public class SubComment {
     private String commentText;
     private User user;
     private int upVotes;
     private int downVotes;
-    private int postId;
+    private int commentId;
     private Date timestamp;
-
-    public int getPostId() {
-        return postId;
-    }
-
-    public void setPostId(int postId) {
-        this.postId = postId;
-    }
 
     public String getCommentText() {
         return commentText;
@@ -50,6 +42,13 @@ public class Comment {
         this.downVotes = downVotes;
     }
 
+    public int getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(int commentId) {
+        this.commentId = commentId;
+    }
 
     public Date getTimestamp() {
         return timestamp;

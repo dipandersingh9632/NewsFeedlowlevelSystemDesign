@@ -2,7 +2,6 @@ package main.java.lld.newsfeedlowleveldesign.service;
 
 import main.java.lld.newsfeedlowleveldesign.models.User;
 import main.java.lld.newsfeedlowleveldesign.session.SessionManager;
-
 import java.util.Map;
 
 public class UserServiceImpl implements UserService{
