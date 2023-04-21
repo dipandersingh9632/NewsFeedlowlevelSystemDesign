@@ -9,7 +9,6 @@ public class User {
     private String password;
     private List<User> followers;
     private List<User> following;
-    private List<NewsFeed> newsFeedList;
 
     private User(Builder builder){
         this.name = builder.name;
@@ -19,8 +18,6 @@ public class User {
         else this.followers = builder.followers;
         if(builder.following == null) this.following = new ArrayList<>();
         else this.following = builder.following;
-        if(builder.newsFeedList == null) this.newsFeedList = new ArrayList<>();
-        else this.newsFeedList = builder.newsFeedList;
     }
 
     public String getName() {
@@ -63,14 +60,16 @@ public class User {
         this.following = following;
     }
 
-    public List<NewsFeed> getNewsFeedList() {
-        return newsFeedList;
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", followers=" + followers +
+                ", following=" + following +
+                '}';
     }
-
-    public void setNewsFeedList(List<NewsFeed> newsFeedList) {
-        this.newsFeedList = newsFeedList;
-    }
-
 
     // Builder class
     public static class Builder{
@@ -79,7 +78,6 @@ public class User {
         private String password;
         private List<User> followers;
         private List<User> following;
-        private List<NewsFeed> newsFeedList;
 
         public static Builder getBuilder(){ return new Builder(); }
 
@@ -102,10 +100,6 @@ public class User {
         }
         public Builder setFollowing(List<User> following){
             this.following = following;
-            return this;
-        }
-        public Builder setNewsFeed(List<NewsFeed> newsFeedList){
-            this.newsFeedList = newsFeedList;
             return this;
         }
         public User build(){

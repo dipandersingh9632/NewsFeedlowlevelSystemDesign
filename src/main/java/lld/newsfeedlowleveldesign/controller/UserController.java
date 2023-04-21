@@ -23,10 +23,14 @@ public class UserController {
         return userService.loginUser(email, password, userMap);
     }
 
-    public User mapDtoToUser(RequestUserDto requestUserDto){
+    public String follow(String email, Map<String,User> userMap){
+        return userService.followUser(email, userMap);
+    }
+
+    private User mapDtoToUser(RequestUserDto requestUserDto){
         return User.Builder.getBuilder().setName(requestUserDto.getName()).setEmail(requestUserDto.getEmail())
                 .setPassword(requestUserDto.getPassword()).setFollowers(requestUserDto.getFollowers())
-                .setFollowing(requestUserDto.getFollowing()).setNewsFeed(requestUserDto.getNewsFeedList()).build();
+                .setFollowing(requestUserDto.getFollowing()).build();
     }
 
 }

@@ -7,4 +7,5 @@ import java.util.Map;
 public interface UserService {
     public String createUser(User user, Map<String, User> userMap);
     public String loginUser(String email, String password, Map<String,User> userMap);
+    public String followUser(String email, Map<String,User> userMap);
 }

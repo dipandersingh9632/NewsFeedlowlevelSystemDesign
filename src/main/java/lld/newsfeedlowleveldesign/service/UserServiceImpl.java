@@ -27,4 +27,15 @@ public class UserServiceImpl implements UserService{
         }
         else return "PASSWORD IS NOT CORRECT";
     }
+
+    @Override
+    public String followUser(String email, Map<String, User> userMap) {
+        if(SessionManager.getLoggedInUser() == null) return "LOGIN FIRST";
+        if(!userMap.containsKey(email)) return "Followed User does not exist Enter correct email id";
+        User loggedInUser = SessionManager.getLoggedInUser();
+        User followedUser = userMap.get(email);
+        loggedInUser.getFollowers().add(followedUser);
+        followedUser.getFollowing().add(loggedInUser);
+        return "SUCCESSFULLY FOLLOWED " + email;
+    }
 }
