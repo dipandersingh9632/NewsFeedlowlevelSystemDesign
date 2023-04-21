@@ -10,9 +10,9 @@ import main.java.lld.newsfeedlowleveldesign.models.Post;
 import main.java.lld.newsfeedlowleveldesign.models.SubComment;
 import main.java.lld.newsfeedlowleveldesign.models.User;
 import main.java.lld.newsfeedlowleveldesign.service.*;
+import main.java.lld.newsfeedlowleveldesign.session.SessionManager;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -55,7 +55,5 @@ public class Main {
         System.out.println(subCommentController.upvote(1,subCommentMap));
         System.out.println(subCommentController.downvote(1,subCommentMap));
         System.out.println(subCommentMap.get(1));
-
-
     }
 }
