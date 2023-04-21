@@ -7,8 +7,8 @@ public class Post {
     private User user;
     private int upVotes;
     private int downVotes;
-    private Set<User> upVoteSet;
-    private Set<User> downVoteSet;
+    private Set<User> upVotePostSet;
+    private Set<User> downVotePostSet;
     private List<Comment> commentList;
     private Date timestamp;
 
@@ -19,8 +19,8 @@ public class Post {
         this.downVotes = 0;
         this.commentList = new ArrayList<>();
         this.timestamp = new Date();
-        upVoteSet = new HashSet<>();
-        downVoteSet = new HashSet<>();
+        upVotePostSet = new HashSet<>();
+        downVotePostSet = new HashSet<>();
     }
 
     @Override
@@ -30,27 +30,27 @@ public class Post {
                 ", user=" + user +
                 ", upVotes=" + upVotes +
                 ", downVotes=" + downVotes +
-                ", upVoteSet=" + upVoteSet +
-                ", downVoteSet=" + downVoteSet +
+                ", upVoteSet=" + upVotePostSet +
+                ", downVoteSet=" + downVotePostSet +
                 ", commentList=" + commentList +
                 ", timestamp=" + timestamp +
                 '}';
     }
 
-    public Set<User> getUpVoteSet() {
-        return upVoteSet;
+    public Set<User> getUpVotePostSet() {
+        return upVotePostSet;
     }
 
-    public void setUpVoteSet(Set<User> upVoteSet) {
-        this.upVoteSet = upVoteSet;
+    public void setUpVotePostSet(Set<User> upVotePostSet) {
+        this.upVotePostSet = upVotePostSet;
     }
 
-    public Set<User> getDownVoteSet() {
-        return downVoteSet;
+    public Set<User> getDownVotePostSet() {
+        return downVotePostSet;
     }
 
-    public void setDownVoteSet(Set<User> downVoteSet) {
-        this.downVoteSet = downVoteSet;
+    public void setDownVotePostSet(Set<User> downVotePostSet) {
+        this.downVotePostSet = downVotePostSet;
     }
 
     public String getText() {

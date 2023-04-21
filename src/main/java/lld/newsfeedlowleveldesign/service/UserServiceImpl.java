@@ -19,9 +19,9 @@ public class UserServiceImpl implements UserService{
     @Override
     public String loginUser(String email, String password, Map<String,User> userMap){
         if(!userMap.containsKey(email)) return "USER DOES NOT EXIST WITH THIS EMAIL " + email;
-        User loggedInUser = userMap.get(email);
-        if(loggedInUser.getPassword().compareTo(password) == 0){
-            SessionManager.setLoggedInUser(loggedInUser);
+        User currUser = userMap.get(email);
+        if(currUser.getPassword().compareTo(password) == 0){
+            SessionManager.setLoggedInUser(currUser);
             return "USER LOGGED IN";
         }
         else return "PASSWORD IS NOT CORRECT";

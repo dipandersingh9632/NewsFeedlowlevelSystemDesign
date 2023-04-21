@@ -1,14 +1,66 @@
 package main.java.lld.newsfeedlowleveldesign.models;
 
-import java.util.Date;
+import java.util.*;
 
 public class Comment {
     private String commentText;
     private User user;
+    List<SubComment> subCommentList;
     private int upVotes;
     private int downVotes;
+    private Set<User> upVoteCommentSet;
+    private Set<User> downVoteCommentSet;
     private int postId;
     private Date timestamp;
+
+    public Comment(String commentText, User user, int postId){
+        this.commentText = commentText;
+        this.user = user;
+        this.postId = postId;
+        this.upVotes = 0;
+        this.downVotes = 0;
+        this.upVoteCommentSet = new HashSet<>();
+        this.downVoteCommentSet = new HashSet<>();
+        this.subCommentList = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentText='" + commentText + '\'' +
+                ", user=" + user +
+                ", upVotes=" + upVotes +
+                ", downVotes=" + downVotes +
+                ", upVoteCommentSet=" + upVoteCommentSet +
+                ", downVoteCommentSet=" + downVoteCommentSet +
+                ", postId=" + postId +
+                ", timestamp=" + timestamp +
+                '}';
+    }
+
+    public Set<User> getUpVoteCommentSet() {
+        return upVoteCommentSet;
+    }
+
+    public void setUpVoteCommentSet(Set<User> upVoteCommentSet) {
+        this.upVoteCommentSet = upVoteCommentSet;
+    }
+
+    public Set<User> getDownVoteCommentSet() {
+        return downVoteCommentSet;
+    }
+
+    public void setDownVoteCommentSet(Set<User> downVoteCommentSet) {
+        this.downVoteCommentSet = downVoteCommentSet;
+    }
+
+    public List<SubComment> getSubCommentList() {
+        return subCommentList;
+    }
+
+    public void setSubCommentList(List<SubComment> subCommentList) {
+        this.subCommentList = subCommentList;
+    }
 
     public int getPostId() {
         return postId;

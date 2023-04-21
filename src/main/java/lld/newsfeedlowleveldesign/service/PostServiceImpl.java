@@ -22,9 +22,9 @@ public class PostServiceImpl implements PostService {
         if(loggedInUser == null)  return "PLEASE LOGIN FIRST";
         if(!postMap.containsKey(id)) return "POST NOT FOUND FOR THIS ID " + id;
         Post currPost = postMap.get(id);
-        if(currPost.getUpVoteSet().contains(loggedInUser)) return "ALREADY UP-VOTE";
+        if(currPost.getUpVotePostSet().contains(loggedInUser)) return "ALREADY UP-VOTE";
         currPost.setUpVotes(currPost.getUpVotes() + 1);
-        currPost.getUpVoteSet().add(loggedInUser);
+        currPost.getUpVotePostSet().add(loggedInUser);
         return "UpVoted SUCCESSFULLY";
     }
     @Override
@@ -33,9 +33,9 @@ public class PostServiceImpl implements PostService {
         if(loggedInUser == null)  return "PLEASE LOGIN FIRST";
         if(!postMap.containsKey(id)) return "POST NOT FOUND FOR THIS ID " + id;
         Post currPost = postMap.get(id);
-        if(currPost.getUpVoteSet().contains(loggedInUser)) return "ALREADY DOWN-VOTE";
+        if(currPost.getDownVotePostSet().contains(loggedInUser)) return "ALREADY DOWN-VOTE";
         currPost.setDownVotes(currPost.getDownVotes() + 1);
-        currPost.getDownVoteSet().add(loggedInUser);
+        currPost.getDownVotePostSet().add(loggedInUser);
         return "DownVoted SUCCESSFULLY";
     }
 
