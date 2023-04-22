@@ -7,18 +7,15 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private List<User> followers;
-    private List<User> following;
+    private List<User> followingUsers;
     private List<Post> posts;
 
     private User(Builder builder){
         this.name = builder.name;
         this.email = builder.email;
         this.password = builder.password;
-        if(builder.followers == null) this.followers = new ArrayList<>();
-        else this.followers = builder.followers;
-        if(builder.following == null) this.following = new ArrayList<>();
-        else this.following = builder.following;
+        if(builder.followingUsers == null) this.followingUsers = new ArrayList<>();
+        else this.followingUsers = builder.followingUsers;
         if(builder.posts == null) this.posts = new ArrayList<>();
         else this.posts = builder.posts;
     }
@@ -55,20 +52,12 @@ public class User {
         this.password = password;
     }
 
-    public List<User> getFollowers() {
-        return followers;
-    }
-
-    public void setFollowers(List<User> followers) {
-        this.followers = followers;
-    }
-
     public List<User> getFollowing() {
-        return following;
+        return followingUsers;
     }
 
     public void setFollowing(List<User> following) {
-        this.following = following;
+        this.followingUsers = followingUsers;
     }
 
     @Override
@@ -77,8 +66,7 @@ public class User {
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", followers=" + followers +
-                ", following=" + following +
+                ", following=" + followingUsers +
                 '}';
     }
 
@@ -87,8 +75,7 @@ public class User {
         private String name;
         private String email;
         private String password;
-        private List<User> followers;
-        private List<User> following;
+        private List<User> followingUsers;
         private List<Post> posts;
 
         public static Builder getBuilder(){ return new Builder(); }
@@ -106,12 +93,8 @@ public class User {
             this.password = password;
             return this;
         }
-        public Builder setFollowers(List<User> followers){
-            this.followers = followers;
-            return this;
-        }
-        public Builder setFollowing(List<User> following){
-            this.following = following;
+        public Builder setFollowing(List<User> followingUsers){
+            this.followingUsers = followingUsers;
             return this;
         }
 

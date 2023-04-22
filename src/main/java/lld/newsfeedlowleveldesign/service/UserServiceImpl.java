@@ -34,7 +34,6 @@ public class UserServiceImpl implements UserService{
         User loggedInUser = SessionManager.getLoggedInUser();
         User followedUser = userMap.get(email);
         loggedInUser.getFollowing().add(followedUser);
-        followedUser.getFollowers().add(loggedInUser);
         return "SUCCESSFULLY FOLLOWED " + email;
     }
 }

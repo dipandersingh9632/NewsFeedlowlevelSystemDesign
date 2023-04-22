@@ -10,7 +10,6 @@ import main.java.lld.newsfeedlowleveldesign.service.sortingStrategy.NewsFeedSort
 
 import java.time.Duration;
 import java.time.Instant;
-import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -51,7 +50,7 @@ public class UserController {
 
     private User mapDtoToUser(RequestUserDto requestUserDto){
         return User.Builder.getBuilder().setName(requestUserDto.getName()).setEmail(requestUserDto.getEmail())
-                .setPassword(requestUserDto.getPassword()).setFollowers(requestUserDto.getFollowers())
+                .setPassword(requestUserDto.getPassword()).setFollowing(requestUserDto.getFollowers())
                 .setFollowing(requestUserDto.getFollowing()).build();
     }
 

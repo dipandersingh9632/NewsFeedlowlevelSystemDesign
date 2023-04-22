@@ -17,23 +17,40 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
+    static Map<String, User> userMap;
+    static Map<Integer, Post> postMap;
+    static Map<Integer, Comment> commentMap;
+    static Map<Integer, SubComment> subCommentMap;
+    static List<Post> allPosts;
+    static UserService userService;
+    static UserController userController;
+    static PostService postService;
+    static PostController postController;
+    static CommentService commentService;
+    static CommentController commentController;
+    static SubCommentService subCommentService;
+    static SubCommentController subCommentController;
+
+
+    public static void initialization(){
+        userMap = new HashMap<>();
+        postMap = new HashMap<>();
+        commentMap = new HashMap<>();
+        subCommentMap = new HashMap<>();
+        allPosts = new ArrayList<>();
+        userService = new UserServiceImpl();
+        userController = new UserController(userService);
+        postService = new PostServiceImpl();
+        postController = new PostController(postService);
+        commentService = new CommentServiceImpl();
+        commentController = new CommentController(commentService);
+        subCommentService = new SubCommentServiceImpl();
+        subCommentController = new SubCommentController(subCommentService);
+    }
     public static void main(String[] args) {
-        Map<String, User> userMap = new HashMap<>();
-        Map<Integer, Post> postMap = new HashMap<>();
-        Map<Integer, Comment> commentMap = new HashMap<>();
-        Map<Integer, SubComment> subCommentMap = new HashMap<>();
-        List<Post> allPosts = new ArrayList<>();
 
-        UserService userService = new UserServiceImpl();
-        UserController userController = new UserController(userService);
-        PostService newsFeedService = new PostServiceImpl();
-        PostController postController = new PostController(newsFeedService);
-        CommentService commentService = new CommentServiceImpl();
-        CommentController commentController = new CommentController(commentService);
-        SubCommentService subCommentService = new SubCommentServiceImpl();
-        SubCommentController subCommentController = new SubCommentController(subCommentService);
-
-
+        // initialization
+        initialization();
 
         // multiple User signs up
         RequestUserDto requestUserDto1 = new RequestUserDto();
@@ -117,6 +134,4 @@ public class Main {
         // User views their news feed, sorted by number of comments
         System.out.println(userController.shownewsfeed("SortByNumComments", allPosts));
     }
-
-
 }
