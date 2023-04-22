@@ -9,6 +9,7 @@ public class User {
     private String password;
     private List<User> followers;
     private List<User> following;
+    private List<Post> posts;
 
     private User(Builder builder){
         this.name = builder.name;
@@ -18,6 +19,16 @@ public class User {
         else this.followers = builder.followers;
         if(builder.following == null) this.following = new ArrayList<>();
         else this.following = builder.following;
+        if(builder.posts == null) this.posts = new ArrayList<>();
+        else this.posts = builder.posts;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     public String getName() {
@@ -78,6 +89,7 @@ public class User {
         private String password;
         private List<User> followers;
         private List<User> following;
+        private List<Post> posts;
 
         public static Builder getBuilder(){ return new Builder(); }
 
@@ -100,6 +112,11 @@ public class User {
         }
         public Builder setFollowing(List<User> following){
             this.following = following;
+            return this;
+        }
+
+        public Builder setPosts(List<Post> posts){
+            this.posts = posts;
             return this;
         }
         public User build(){

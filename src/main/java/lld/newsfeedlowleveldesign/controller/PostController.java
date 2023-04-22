@@ -3,6 +3,7 @@ package main.java.lld.newsfeedlowleveldesign.controller;
 import main.java.lld.newsfeedlowleveldesign.models.Post;
 import main.java.lld.newsfeedlowleveldesign.service.PostService;
 
+import java.util.List;
 import java.util.Map;
 
 public class PostController {
@@ -13,8 +14,8 @@ public class PostController {
         this.postService = postService;
     }
 
-    public String post(String text, Map<Integer,Post> postMap){
-        return postService.createPost(text, postMap);
+    public String post(String text, Map<Integer,Post> postMap, List<Post> allPosts){
+        return postService.createPost(text, postMap, allPosts);
     }
 
     public String upvote(Integer id, Map<Integer,Post> postMap){

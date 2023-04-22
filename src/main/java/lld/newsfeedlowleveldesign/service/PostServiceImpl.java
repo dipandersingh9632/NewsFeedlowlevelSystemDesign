@@ -5,15 +5,18 @@ import main.java.lld.newsfeedlowleveldesign.models.Post;
 import main.java.lld.newsfeedlowleveldesign.session.SessionManager;
 
 
+import java.util.List;
 import java.util.Map;
 
 public class PostServiceImpl implements PostService {
     @Override
-    public String createPost(String text, Map<Integer, Post> postMap) {
+    public String createPost(String text, Map<Integer, Post> postMap, List<Post> allPosts) {
         User loggedInUser = getLoggedUser();
         if(loggedInUser == null) return "PLEASE LOGIN FIRST";
         Post newsFeed = new Post(text, loggedInUser);
+        loggedInUser.getPosts().add(newsFeed);
         postMap.put(postMap.size()+1, newsFeed);
+        allPosts.add(newsFeed);
         return "Post added successfully";
     }
     @Override

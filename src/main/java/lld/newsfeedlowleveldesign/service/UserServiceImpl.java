@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
         User currUser = userMap.get(email);
         if(currUser.getPassword().compareTo(password) == 0){
             SessionManager.setLoggedInUser(currUser);
-            return "USER LOGGED IN";
+            return "USER LOGGED IN: " + currUser.getName();
         }
         else return "PASSWORD IS NOT CORRECT";
     }
@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService{
         if(!userMap.containsKey(email)) return "Followed User does not exist Enter correct email id";
         User loggedInUser = SessionManager.getLoggedInUser();
         User followedUser = userMap.get(email);
-        loggedInUser.getFollowers().add(followedUser);
-        followedUser.getFollowing().add(loggedInUser);
+        loggedInUser.getFollowing().add(followedUser);
+        followedUser.getFollowers().add(loggedInUser);
         return "SUCCESSFULLY FOLLOWED " + email;
     }
 }
